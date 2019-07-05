@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class PredicationControlled {
 
 	@RequestMapping(value = "/getGrains", method = RequestMethod.GET)
-	@CrossOrigin(origins = "http://localchost")
+	@CrossOrigin(origins = "http://localhost:3000")
 	public List<String> getGrains() {
 		List<String> grains = new ArrayList<>();
 		grains.add("Paddy");
@@ -36,8 +36,15 @@ public class PredicationControlled {
 	@CrossOrigin(origins = "http://localhost:3000")
 	public ResponseEntity<Object> getCities(@PathVariable("id") String id) {
 		List<String> cities = new ArrayList<>();
-		cities.add("Bangalore");
-		cities.add("Tumkur");
+		if (id.equals("Karnataka")) {
+			cities.add("Bangalore");
+			cities.add("Belgaum");
+			cities.add("Tumkur");
+		} else if (id.equals("Kerala")){
+			cities.add("Thiruvananthapuram");
+			cities.add("Kochi");
+			cities.add("Palakkad");
+		}
 		return new ResponseEntity<Object>(cities, HttpStatus.OK);
 
 	}
