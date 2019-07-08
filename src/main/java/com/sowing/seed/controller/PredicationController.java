@@ -12,7 +12,18 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class PredicationControlled {
+public class PredicationController {
+	
+	
+	
+	@RequestMapping(value = "/getSoilType", method = RequestMethod.GET)
+	@CrossOrigin(origins = "http://localhost:3000")
+	public List<String> getSoilType() {
+		List<String> soilType = new ArrayList<>();
+		soilType.add("Red");
+		soilType.add("Black");
+		return soilType;
+	}
 
 	@RequestMapping(value = "/getGrains", method = RequestMethod.GET)
 	@CrossOrigin(origins = "http://localhost:3000")
